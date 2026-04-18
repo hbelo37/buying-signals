@@ -1,26 +1,22 @@
 PRODUCT_CONTEXT = {
-    "category": "HR Tech",
-    "description": "Hiring and employee management platform for scaling teams",
-    "target_persona": "HR Leaders, Talent Acquisition Heads"
+    "category": "Sales Tech",
+    "description": "Sales prospecting platform for sales teams",
+    "target_persona": "Sales Leaders, Sales Development Representatives"
 }
 
 SIGNAL_DEFINITIONS = """
 hiring:
-- Open roles relevant to product (HR, recruiters, talent teams)
+- Real open roles (SDR, Sales Engineer, GTM Engineer)
 
 funding:
-- Any funding announcement (Series A/B/C, raised capital)
+- Funding / capital raised
 
 growth_expansion:
-- New geography
-- New office
-- New product launch
-- Entering new segment
+- New markets, offices, product launches
 
 tech_stack:
-- Mention of tools similar or competitive
+- Tools / integrations
 
 other:
-- Partnerships
-- Major announcements relevant to GTM
+- Partnerships / announcements
 """

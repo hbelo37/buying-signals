@@ -9,29 +9,24 @@ from src.config import PRODUCT_CONTEXT, SIGNAL_DEFINITIONS
 def run(company, domain):
     signals = get_signals(company, domain)
 
-    llm_output = analyze(
+    analysis = analyze(
         company,
         signals,
         PRODUCT_CONTEXT,
         SIGNAL_DEFINITIONS
     )
 
-    # 🔥 Remove outreach if no signals
-    if not any([
-        llm_output.get("signals", {}).get("hiring"),
-        llm_output.get("signals", {}).get("funding"),
-        llm_output.get("signals", {}).get("growth_expansion"),
-        llm_output.get("signals", {}).get("tech_stack"),
-        llm_output.get("signals", {}).get("other"),
-    ]):
-        llm_output["outreach_steps"] = []
+    # remove outreach if no signals
+    if not any(analysis.get("signals", {}).values()):
+        analysis["outreach_steps"] = []
 
     return {
         "company": company,
-        "domain": domain,
-        "product_context": PRODUCT_CONTEXT,
-        "signals": signals,
-        "analysis": llm_output
+        "signals": analysis.get("signals", {}),
+        "intent": analysis.get("intent"),
+        "confidence": analysis.get("confidence"),
+        "explanation": analysis.get("explanation"),
+        "outreach_steps": analysis.get("outreach_steps", [])
     }
 
 
