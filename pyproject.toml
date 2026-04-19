@@ -1,0 +1,20 @@
+[project]
+name = "buying-signals"
+version = "0.1.0"
+dependencies = [
+    "requests",
+    "python-dotenv"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.uv]
+package = true
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
